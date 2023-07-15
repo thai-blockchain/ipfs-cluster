@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+
+  ipfs:
+    container_name: ipfs
+    image: ipfs/kubo:release
+    ports:
+      - "4001:4001" 
+      - "4001:4001/udp" 
+    volumes:
+      - ./ipfs:/data/ipfs
+      - ./00-bootstrap.sh:/container-init.d/00-bootstrap.sh
+
+  cluster:
+    container_name: cluster
+    image: ipfs/ipfs-cluster:latest
+    depends_on:
+      - ipfs
+    env_file:
+      - .env
+    environment:
+      CLUSTER_PEERNAME: ${CLUSTER_PEERNAME}
+      CLUSTER_SECRET: ${CLUSTER_SECRET} 
+      CLUSTER_IPFSHTTP_NODEMULTIADDRESS: /dns4/ipfs/tcp/5001
+    ports:
+      - "9096:9096"
+      - "9096:9096/udp"
+    volumes:
+      - ./cluster:/data/ipfs-cluster
