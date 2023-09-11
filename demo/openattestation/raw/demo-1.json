@@ -1,0 +1,44 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://ipfs.blockchain.or.th/ipns/k51qzi5uqu5dgkpco6v2punro09thdl3xf1tvax9zo7c7ob7tnrz4vkgyt2sw9/schemas/example.v1.json"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "AlumniCredential",
+    "OpenAttestationCredential"
+  ],
+  "issuer": {
+    "id": "did:ethr:0x8570e2bBBcE8501e681C336DF2BEf71625b417D7",
+    "name": "Example University",
+    "type": "OpenAttestationIssuer"
+  },
+  "issuanceDate": "2023-08-28T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+    "alumniOf": {
+      "id": "did:ethr:0x8570e2bBBcE8501e681C336DF2BEf71625b417D7",
+      "name": "Example University"
+    }
+  },
+  "openAttestationMetadata": {
+    "template": {
+      "name": "ALUMNI",
+      "type": "EMBEDDED_RENDERER",
+      "url": "https://tutorial-renderer.openattestation.com"
+    },
+    "proof": {
+      "type": "OpenAttestationProofMethod",
+      "method": "DID",
+      "value": "did:ethr:0x8570e2bBBcE8501e681C336DF2BEf71625b417D7",
+      "revocation": {
+        "type": "REVOCATION_STORE",
+        "location": "0x7223d1154E42422cA6a0868D6f2eE41677AE8C16"
+      }
+    },
+    "identityProof": {
+      "type": "DNS-DID",
+      "identifier": "attestation.testnet.blockchain.or.th"
+    }
+  }
+}
